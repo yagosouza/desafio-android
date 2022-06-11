@@ -12,7 +12,11 @@ class PicPayApplication : Application() {
 
         startKoin {
             androidContext(this@PicPayApplication)
-            modules(listOf(picPayModule))
+            modules(
+                listOf(
+                    picPayModule
+                )
+            )
         }
     }
 }

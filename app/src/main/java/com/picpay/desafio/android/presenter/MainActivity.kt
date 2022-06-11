@@ -9,9 +9,11 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
+import com.picpay.desafio.android.data.local.UserDao
 import com.picpay.desafio.android.databinding.ActivityMainBinding
 import com.picpay.desafio.android.presenter.adapter.UserListAdapter
 import org.koin.android.ext.android.bind
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
