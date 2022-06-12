@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.picpay.desafio.android.data.local.UserDao
 import com.picpay.desafio.android.domain.GetUsersUseCase
 import com.picpay.desafio.android.presenter.model.UserUiModel
 import com.picpay.desafio.android.presenter.model.toUiModel

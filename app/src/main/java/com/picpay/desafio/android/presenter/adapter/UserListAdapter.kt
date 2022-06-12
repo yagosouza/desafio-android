@@ -3,15 +3,12 @@ package com.picpay.desafio.android.presenter.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.databinding.ListItemUserBinding
-import com.picpay.desafio.android.domain.model.User
 import com.picpay.desafio.android.presenter.model.UserUiModel
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.list_item_user.view.*
 
 class UserListAdapter(
     private val users: List<UserUiModel>
@@ -47,5 +44,5 @@ class UserListAdapter(
     override fun getItemCount(): Int = users.size
 
     inner class UsersViewHolder(val binding: ListItemUserBinding) :
-            RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.root)
 }

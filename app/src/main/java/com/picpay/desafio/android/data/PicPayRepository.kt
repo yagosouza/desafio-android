@@ -13,8 +13,6 @@ class PicPayRepositoryImpl(
     private val userDao: UserDao
 ) : PicPayRepository {
 
-   // private val userDao: UserDao? = null
-
     override suspend fun getUsers(): List<User> {
         val result = service.getUsers().parseResponse()
 
@@ -39,8 +37,8 @@ class PicPayRepositoryImpl(
 
     override suspend fun getLocalUsers(): List<User> {
         val usersCasted = arrayListOf<User>()
-        val localUsers = userDao?.getUsers()
-        localUsers?.forEach {
+        val localUsers = userDao.getUsers()
+        localUsers.forEach {
             usersCasted.add(User(it.img, it.name, it.idUser, it.userName))
         }
         return usersCasted
@@ -48,7 +46,7 @@ class PicPayRepositoryImpl(
 
     override suspend fun saveLocalUsers(userList: List<User>) {
         userList.forEach {
-            userDao?.saveUser(UserEntity(0, it.name, it.username, it.img))
+            userDao.saveUser(UserEntity(0, it.name, it.username, it.img))
         }
     }
 }

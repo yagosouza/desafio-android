@@ -11,9 +11,11 @@ class PicPayApplication : Application() {
         super.onCreate()
 
         startKoin {
+            androidLogger()
             androidContext(this@PicPayApplication)
             modules(
                 listOf(
+                    databaseModule,
                     picPayModule
                 )
             )

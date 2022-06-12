@@ -8,11 +8,11 @@ class GetUsers(
     private val picPayRepository: PicPayRepository
 ) : GetUsersUseCase {
 
-    override suspend fun invoke(): List<User> = //try {
+    override suspend fun invoke(): List<User> = try {
         picPayRepository.getUsers()
-   /* } catch (ex: Exception) {
+    } catch (ex: Exception) {
         listOf()
-    }*/
+    }
 }
 
 interface GetUsersUseCase {
