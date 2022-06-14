@@ -5,20 +5,16 @@ import com.picpay.desafio.android.data.api.PicPayService
 import com.picpay.desafio.android.data.local.UserDao
 import com.picpay.desafio.android.data.local.UserEntity
 import com.picpay.desafio.android.data.model.UserResponse
-import com.picpay.desafio.android.helper.network.parseResponse
-import com.picpay.desafio.android.helper.network.Output
+import com.picpay.desafio.android.data.repository.PicPayRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)

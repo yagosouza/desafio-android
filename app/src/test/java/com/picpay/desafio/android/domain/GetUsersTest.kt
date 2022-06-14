@@ -1,13 +1,10 @@
 package com.picpay.desafio.android.domain
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.picpay.desafio.android.data.GetUsersException
-import com.picpay.desafio.android.data.PicPayRepository
-import com.picpay.desafio.android.data.PicPayRepositoryImpl
+import com.picpay.desafio.android.data.repository.PicPayRepositoryImpl
 import com.picpay.desafio.android.data.api.PicPayService
 import com.picpay.desafio.android.data.local.UserDao
-import com.picpay.desafio.android.data.local.UserEntity
-import com.picpay.desafio.android.data.model.UserResponse
+import com.picpay.desafio.android.domain.exception.NoCachedUsersException
 import com.picpay.desafio.android.domain.model.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineDispatcher
@@ -77,7 +74,7 @@ class GetUsersTest {
     fun `when REQUEST return EXCEPTION`() =
         dispatcher.runBlockingTest {
             `when`(repositoryImpl.getUsers()).thenReturn(
-                throw GetUsersException()
+                throw NoCachedUsersException()
             )
 
             val result = repositoryImpl.getUsers()

@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.presenter.model
+package com.picpay.desafio.android.presentation.model
 
 import com.picpay.desafio.android.domain.model.User
 

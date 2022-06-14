@@ -1,8 +1,9 @@
 package com.picpay.desafio.android.domain
 
-import com.picpay.desafio.android.data.GetUsersException
-import com.picpay.desafio.android.data.PicPayRepository
+import com.picpay.desafio.android.data.repository.PicPayRepositoryImpl
+import com.picpay.desafio.android.domain.exception.NoCachedUsersException
 import com.picpay.desafio.android.domain.model.User
+import com.picpay.desafio.android.domain.usecase.GetUsersUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
@@ -11,9 +12,9 @@ import org.junit.Test
 
 class GetUsersTestMockk {
 
-    private val repository = mockk<PicPayRepository>()
+    private val repository = mockk<PicPayRepositoryImpl>()
 
-    private val getUsers = GetUsers(repository)
+    private val getUsers = GetUsersUseCase(repository)
 
     private var user: User = User(
         id = 1,
@@ -36,15 +37,25 @@ class GetUsersTestMockk {
         Assert.assertEquals(result.size, listsOfUsers.size)
     }
 
-    @Test
-    fun getUsers_return_exception() = runBlocking {
+    @Test(expected = Exception::class)
+    fun getUsers_return_generic_exception() = runBlocking {
         //GIVEN
-        coEvery { repository.getUsers() } throws GetUsersException()
+        coEvery { repository.getUsers() } throws Exception()
 
         //WHEN
         val result = getUsers()
 
         //THEN
-        Assert.assertEquals(result.size, 0)
+        //Assert.assertEquals(result.size, 0)
+    }
+
+    @Test(expected=NoCachedUsersException::class)
+    fun getUsers_return_exception() = runBlocking {
+        //GIVEN
+        coEvery { repository.getUsers() } throws NoCachedUsersException()
+
+        //WHEN
+        val result = getUsers()
+
     }
 }

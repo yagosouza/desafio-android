@@ -1,18 +1,15 @@
-package com.picpay.desafio.android.presenter
+package com.picpay.desafio.android.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.picpay.desafio.android.domain.GetUsersUseCase
+import com.picpay.desafio.android.domain.usecase.GetUsersUseCase
 import com.picpay.desafio.android.domain.model.User
-import junit.framework.Assert
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -57,9 +54,9 @@ class PicPayViewModelTest {
 //        }
 }
 
-class GetUsersUseCaseMock(private val userList: List<User>) : GetUsersUseCase {
+class GetUsersUseCaseMock(private val userList: List<User>) {
 
-    override suspend fun invoke(): List<User> {
+    suspend operator fun invoke(): List<User> {
         return userList
     }
 
