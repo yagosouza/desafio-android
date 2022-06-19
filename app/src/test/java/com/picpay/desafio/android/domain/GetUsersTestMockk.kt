@@ -34,7 +34,7 @@ class GetUsersTestMockk {
         val result = getUsers()
 
         //THEN
-        Assert.assertEquals(result.size, listsOfUsers.size)
+        Assert.assertEquals(result, listsOfUsers)
     }
 
     @Test(expected = Exception::class)
